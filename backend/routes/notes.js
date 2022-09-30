@@ -8,7 +8,7 @@ notes.get('/', async (req, res) => {
 
 notes.post('/', async (req, res) => {
   const note = new Note({
-    title: req.body.title,
+    description: req.body.description,
   });
 
   try {
