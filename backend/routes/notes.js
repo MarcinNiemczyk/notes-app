@@ -33,4 +33,16 @@ notes.get('/:noteId', async (req, res) => {
   }
 });
 
+notes.put('/:noteId', async (req, res) => {
+  try {
+    const note = await Note.updateOne(
+      { _id: req.params.noteId },
+      { $set: { description: req.body.description } }
+    );
+    res.status(200).json(note);
+  } catch (err) {
+    res.status(404).json(err);
+  }
+});
+
 module.exports = notes;
