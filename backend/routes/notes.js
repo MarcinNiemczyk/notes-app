@@ -3,7 +3,12 @@ const Note = require('../models/Note');
 const notes = express.Router();
 
 notes.get('/', async (req, res) => {
-  res.json({ message: 'test' });
+  try {
+    const notes = await Note.find();
+    res.status(200).json(notes);
+  } catch (err) {
+    res.status(404).json({ message: err });
+  }
 });
 
 notes.post('/', async (req, res) => {
