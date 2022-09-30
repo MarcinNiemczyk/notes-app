@@ -1,8 +1,7 @@
 const express = require('express');
+const router = require('./router');
 const app = express();
 
-app.get('/', (req, res) => {
-  res.json({ message: 'Initial commit' });
-});
+app.use('/api', router);
 
 app.listen(3001);
